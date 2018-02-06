@@ -23,12 +23,13 @@ public class RoombaTheRobotServiceImpl implements RoombaTheRobotService {
 			cleanPatchesCount = 0;
 			output = new Output();
 			currentCoords = input.getCoords();
+			Integer[] roomsize = input.getRoomSize();
 			String instructions = input.getInstructions();
 			for (int i = 0; i < instructions.length(); i++) {
 				switch (instructions.charAt(i)) {
 
 				case 'N': {
-					if(!(currentCoords[1]++ <= 5) && !(currentCoords[1]++ >= 0)) {
+					if(!(currentCoords[1]++ <= roomsize[1]) && !(currentCoords[1]++ >= 0)) {
 						currentCoords[1]--;
 					}
 					setCleanPatchesCount();
@@ -37,7 +38,7 @@ public class RoombaTheRobotServiceImpl implements RoombaTheRobotService {
 				}
 
 				case 'S': {
-					if(!(currentCoords[1]-- <= 5) && !(currentCoords[1]-- >= 0)) {
+					if(!(currentCoords[1]-- <= roomsize[1]) && !(currentCoords[1]-- >= 0)) {
 					currentCoords[1]++;
 					}
 					setCleanPatchesCount();
@@ -45,7 +46,7 @@ public class RoombaTheRobotServiceImpl implements RoombaTheRobotService {
 
 				}
 				case 'E': {
-					if(!(currentCoords[0]++ <= 5) && !(currentCoords[0]++ >= 0)) {
+					if(!(currentCoords[0]++ <= roomsize[0]) && !(currentCoords[0]++ >= 0)) {
 					currentCoords[0]--;
 					}
 					setCleanPatchesCount();
@@ -53,12 +54,15 @@ public class RoombaTheRobotServiceImpl implements RoombaTheRobotService {
 				}
 
 				case 'W': {
-					if(!(currentCoords[0]-- <= 5) && !(currentCoords[0]-- >= 0)) {
+					if(!(currentCoords[0]-- <= roomsize[0]) && !(currentCoords[0]-- >= 0)) {
 					currentCoords[0]++;
 					}
 					setCleanPatchesCount();
 					break;
 				}
+				
+				default :
+					break;
 
 				}
 			}
