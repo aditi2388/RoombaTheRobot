@@ -29,8 +29,8 @@ public class RoombaTheRobotServiceImpl implements RoombaTheRobotService {
 				switch (instructions.charAt(i)) {
 
 				case 'N': {
-					if(!(currentCoords[1]++ <= roomsize[1]) && !(currentCoords[1]++ >= 0)) {
-						currentCoords[1]--;
+					if(currentCoords[1] < roomsize[1]) {
+						currentCoords[1]++;
 					}
 					setCleanPatchesCount();
 					
@@ -38,24 +38,24 @@ public class RoombaTheRobotServiceImpl implements RoombaTheRobotService {
 				}
 
 				case 'S': {
-					if(!(currentCoords[1]-- <= roomsize[1]) && !(currentCoords[1]-- >= 0)) {
-					currentCoords[1]++;
+					if(currentCoords[1] > 0) {
+					currentCoords[1]--;
 					}
 					setCleanPatchesCount();
 					break;
 
 				}
 				case 'E': {
-					if(!(currentCoords[0]++ <= roomsize[0]) && !(currentCoords[0]++ >= 0)) {
-					currentCoords[0]--;
+					if(currentCoords[0] < roomsize[0]) {
+					currentCoords[0]++;
 					}
 					setCleanPatchesCount();
 					break;
 				}
 
 				case 'W': {
-					if(!(currentCoords[0]-- <= roomsize[0]) && !(currentCoords[0]-- >= 0)) {
-					currentCoords[0]++;
+					if(currentCoords[0] > 0) {
+					currentCoords[0]--;
 					}
 					setCleanPatchesCount();
 					break;
